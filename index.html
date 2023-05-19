@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bankist</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <nav>
@@ -23,18 +24,36 @@
                 <p class="bank-balance">0000€</p>
             </div>
             <div class="movements">
-
+                <div class="movements-row">
+                    <div class="movement-type movement-type-deposit">2 deposit</div>
+                    <div class="movement-date">3 days ago</div>
+                    <div class="movement-amount">4 000€</div>
+                </div>
+                <div class="movements-row">
+                    <div class="movement-type movement-type-withdrawal">1 withdrawal</div>
+                    <div class="movement-date">15/5/2023</div>
+                    <div class="movement-amount">445€</div>
+                </div>
+            </div>
+            <div class="summary">
+                <p class="summary-label">In</p>
+                <p class="summary-value summary-value-in">0000€</p>
+                <p class="summary-label">Out</p>
+                <p class="summary-value summary-value-out">0000€</p>
+                <p class="summary-label">Interest</p>
+                <p class="summary-value summary-value-interest">0000€</p>
+                <button class="btn-sort">&downarrow; SORT</button>
             </div>
             <div class="transfer">
                 <form class="transfer-money">
                     <input type="text" class="transfer-to transfer-name" placeholder="Transfer to">
-                    <input type="text" class="transfer-to transfer-amount" placeholder="Amount">
+                    <input type="number" class="transfer-to transfer-amount" placeholder="Amount">
                     <button class="btn-transfer">&rarr;</button>
                 </form>
             </div>
             <div class="request">
                 <form class="request-loan">
-                    <input type="text" class="request-amount" placeholder="Amount">
+                    <input type="number" class="request-amount" placeholder="Amount">
                     <button class="btn-request">&rarr;</button>
                 </form>
             </div>
@@ -46,5 +65,6 @@
                 </form>
             </div>
          </main>
+         <script src="script.js"></script>
     </body>
 </html>

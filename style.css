@@ -1,0 +1,10 @@
+body{
+    padding: 1% 5%;
+    margin: 0px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
