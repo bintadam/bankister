@@ -75,3 +75,71 @@ nav{
     outline: none;
     color: #777;
 }
+
+main{
+    position: relative;
+    max-width: 100rem;
+    margin: 4rem auto;
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    grid-template-rows: auto repeat(3, 15rem) auto;
+    gap: 2rem;
+    /* opacity: 0;
+    transition: all 1s; */
+}
+
+.balance{
+    grid-column: 1/ span 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.current-balance{
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: -0.2rem;
+}
+
+.balance-date{
+    font-size: 1.4rem;
+    color: #888;
+}
+
+.bank-balance{
+    font-size: 4.5rem;
+    font-weight: 400;
+}
+
+.movements{
+    grid-row: 2/ span 3;
+    background-color: #fff;
+    border-radius: 1rem;
+    overflow: scroll;
+}
+
+.operation{
+    display: flex;
+    left: 50%;
+}
+
+.current-balance{
+    display: flex;
+}
+
+.bank-balance{
+    display: flex;
+}
+
+.operation-transfer{
+    background-image: linear-gradient(to top left, #ffb003,#ffcb03);
+}
+
+.operation-request{
+    background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+
+.operation-close-account{
+    background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
