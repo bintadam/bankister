@@ -32,11 +32,11 @@ const accounts = [account1, account2, account3, account4];
 
 const start = document.querySelector(".start");
 const balanceDate = document.querySelector(".balance-date");
-const bankBalnce = document.querySelector(".bank-balance");
+const bankBalance = document.querySelector(".bank-balance");
 
 const valueIn = document.querySelector(".summary-value-in");
 const valueOut = document.querySelector(".summary-value-out");
-const interest = document.querySelector(".summary-interest");
+const interestValue = document.querySelector(".summary-value-interest");
 
 const muhim = document.querySelector(".muhim")
 const movementsMuhim = document.querySelector(".movements");
@@ -68,7 +68,26 @@ const displayMovements = function(movements){
     });
 };
 
-displayMovements(account1.movements)
+const calcDisplayBalance = function(acc){
+    acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
+    balanceDate.textContent = `${acc.balance}`;
+}
+
+const calcDisplaySummary = function(acc){
+    const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0)
+    valueIn.textContent = `${incomes}€`;
+
+    const out= acc.movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
+    valueOut.textContent = `${out}€`;
+
+    const interest = acc.movements.filter(mov => mov > 0).map(deposit => (deposit * acc.interestRate)/ 100).filter((int, i, arr) =>{
+        return int>=1;
+    })
+    .reduce((acc, int)=> acc + int, 0);
+    interestValue.textContent = `${interest}€`
+}
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const createUsernames = function(accs){
      accs.forEach(function(account){
@@ -76,3 +95,9 @@ const createUsernames = function(accs){
     })
 }
 createUsernames(accounts)
+
+const deposits = movements.filter((mov)=> mov > 0);
+console.log(deposits)
+
+const withdrawals = movements.filter((mov) => mov< 0);
+console.log(withdrawals)
