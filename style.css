@@ -76,6 +76,15 @@ nav{
     color: #777;
 }
 
+.btn-sort {
+    margin-left: auto;
+    border: none;
+    background: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
 .muhim{
     position: relative;
     max-width: 100rem;
