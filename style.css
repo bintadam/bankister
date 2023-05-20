@@ -151,9 +151,38 @@ nav{
     background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
 
-.operation{
+.movement-amount{
+    font-size: 1.7rem;
+    margin-left: auto;
+}
+
+.summary {
+    grid-row: 5 / 6;
     display: flex;
-    left: 50%;
+    align-items: baseline;
+    padding: 0 0.3rem;
+    margin-top: 1rem;
+}
+
+.summary-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-right: 0.8rem;
+}
+  
+.summary-value {
+    font-size: 2.2rem;
+    margin-right: 2.5rem;
+}
+  
+.summary-value-in,
+.summary-value-interest {
+    color: #66c873;
+}
+  
+.summary-value-out {
+    color: #f5465d;
 }
 
 .current-balance{
@@ -164,11 +193,10 @@ nav{
     display: flex;
 }
 
-.movements{
-    grid-row: 2 /span 3;
-    background-color: #fff;
+.operation{
     border-radius: 1rem;
-    overflow: scroll;
+    padding: 3rem 4rem;
+    color: #333;
 }
 
 .operation-transfer{
@@ -181,4 +209,15 @@ nav{
 
 .operation-close-account{
     background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+
+h2{
+    margin-bottom: 1.5rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form{
+    
 }
