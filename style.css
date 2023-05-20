@@ -76,7 +76,7 @@ nav{
     color: #777;
 }
 
-main{
+.muhim{
     position: relative;
     max-width: 100rem;
     margin: 4rem auto;
@@ -119,6 +119,38 @@ main{
     overflow: scroll;
 }
 
+.movements-row{
+    padding: 2.25rem 4rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.movement-type{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #fff;
+    padding: 0.1rem 1rem;
+    border-radius: 10rem;
+    margin-right: 2rem;
+}
+
+.movement-date{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #666;
+}
+
+.movement-type-deposit {
+    background-image: linear-gradient(to top left, #39b385, #9be15d);
+  }
+  
+.movement-type-withdrawal {
+    background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+
 .operation{
     display: flex;
     left: 50%;
@@ -130,6 +162,13 @@ main{
 
 .bank-balance{
     display: flex;
+}
+
+.movements{
+    grid-row: 2 /span 3;
+    background-color: #fff;
+    border-radius: 1rem;
+    overflow: scroll;
 }
 
 .operation-transfer{
