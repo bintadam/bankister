@@ -37,8 +37,8 @@ const bankBalance = document.querySelector(".bank-balance");
 const valueIn = document.querySelector(".summary-value-in");
 const valueOut = document.querySelector(".summary-value-out");
 const interestValue = document.querySelector(".summary-value-interest");
-
-const muhim = document.querySelector(".start")
+const labelTimer = document.querySelector(".timer");
+const muhim = document.querySelector(".muhim")
 const movementsMuhim = document.querySelector(".movements");
 
 const inputUser = document.querySelector(".input-user");
@@ -55,24 +55,31 @@ const requestBtn = document.querySelector(".btn-request");
 const closeBtn = document.querySelector(".btn-close");
 const sortBtn = document.querySelector(".btn-sort");
 
-const displayMovements = function(movements, sort= false){
-    movementsMuhim.innerHTML = "";
+
+const displayMovements = function (movements, sort = false) {
+    movementsMuhim.innerHTML = '';
+  
     const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
-    movs.forEach(function(mov, i) {
-        const type = mov > 0 ? "deposit": "withdrawal";
-        const html = `
-            <div class="movements-row">
-                <div class="movement-type movement-type-${type}>${i + 1}</div>
-                <div class="movement-amount">${mov}</div>
-            </div>
-        `;
-        movementsMuhim.insertAdjacentHTML('afterbegin', html);
+  
+    movs.forEach(function (mov, i) {
+      const type = mov > 0 ? 'deposit' : 'withdrawal';
+  
+      const html = `
+        <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${
+        i + 1
+      } ${type}</div>
+          <div class="movements__value">${mov}€</div>
+        </div>
+      `;
+  
+      movementsMuhim.insertAdjacentHTML('afterbegin', html);
     });
 };
 
 const calcDisplayBalance = function(acc){
-    acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
-    balanceDate.textContent = `${acc.balance}€`;
+    acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+    bankBalance.textContent = `${acc.balance}€`;
 }
 
 const calcDisplaySummary = function(acc){
@@ -80,20 +87,18 @@ const calcDisplaySummary = function(acc){
     valueIn.textContent = `${incomes}€`;
 
     const out= acc.movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
-    valueOut.textContent = `${out}€`;
+    valueOut.textContent = `${Math.abs(out)}€`;
 
     const interest = acc.movements.filter(mov => mov > 0).map(deposit => (deposit * acc.interestRate)/ 100).filter((int, i, arr) =>{
-        return int>=1;
+        return int >= 1;
     })
     .reduce((acc, int)=> acc + int, 0);
     interestValue.textContent = `${interest}€`
 }
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 const createUsernames = function(accs){
-     accs.forEach(function(account){
-        account.owner.toLowerCase().split(' ').map(name => name[0]).join(' ');
+     accs.forEach(function(acc){
+        acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
     })
 }
 createUsernames(accounts)
@@ -108,18 +113,21 @@ let currentAccount;
 
 loginBtn.addEventListener("click", function(e){
     e.preventDefault();
+
     currentAccount = accounts.find(
-        acc => acc.username = inputUser.value
+        acc => acc.username === inputUser.value
     );
     console.log(currentAccount);
+
     if(currentAccount?.pin === Number(inputUserPin.value)){
         start.textContent= `Welcome back, ${currentAccount.owner.split(' ')[0]
-    }`;
-    muhim.getElementsByClassName.opacity= 100,
-    inputUser.value = inputUserPin.value = '';
-    inputUserPin.blur();
+        }`;
+        muhim.style.opacity= 100,
 
-    updateUI(currentAccount);
+        inputUser.value = inputUserPin.value = '';
+        inputUserPin.blur();
+
+        updateUI(currentAccount);
     }
 });
 
@@ -164,10 +172,11 @@ closeBtn.addEventListener('click', function(e){
         const index = accounts.findIndex(
             acc => acc.username === currentAccount.username
         );
+
         accounts.splice(index, 1)
         muhim.style.opacity = 0;
     }
-    inputCloseUser.value = inputClosePin.value =''
+    inputCloseUser.value = inputClosePin.value ='';
 });
 
 let sorted = false;
